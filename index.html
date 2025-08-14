@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Business Applications - Interactive Learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IoT Business Applications - Interactive Learning</h1>
+            <p>Week 6: IoT Applications in Business (Part 1)</p>
+        </header>
+
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="six-pillars">Six Pillars Lab</button>
+            <button class="tab-btn" data-tab="market-analysis">Market Analysis</button>
+            <button class="tab-btn" data-tab="iot-simulation">IoT Simulation</button>
+        </nav>
+
+        <main>
+            <div id="six-pillars" class="tab-content active">
+                <div class="activity-header">
+                    <h2>🏛️ Identify the Six Pillars of the IoT System</h2>
+                    <p>Match each description to the correct IoT System pillar, then answer multiple-choice questions about components.</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <div class="pillars-list">
+                        <h3>Available Pillars</h3>
+                        <div class="pillar-item" draggable="true" data-pillar="network">Network Connectivity</div>
+                        <div class="pillar-item" draggable="true" data-pillar="fog">Fog Computing</div>
+                        <div class="pillar-item" draggable="true" data-pillar="security">Security</div>
+                        <div class="pillar-item" draggable="true" data-pillar="analytics">Data Analytics</div>
+                        <div class="pillar-item" draggable="true" data-pillar="management">Management & Automation</div>
+                        <div class="pillar-item" draggable="true" data-pillar="platform">Application Enablement Platform</div>
+                    </div>
+
+                    <div class="descriptions-list">
+                        <h3>Descriptions - Drag Pillars Here</h3>
+                        <div class="description-box" data-answer="network">
+                            <div class="drop-zone"></div>
+                            <p>A broad selection of reliable and scalable routing, switching, and wireless products, as well as software-only solutions that can be integrated with third-party devices.</p>
+                        </div>
+                        <div class="description-box" data-answer="fog">
+                            <div class="drop-zone"></div>
+                            <p>Extends cloud connectivity closer to the edge, bringing end devices, such as smart meters, industrial sensors, robotic machines, and others, into an integrated computing, networking, and storage system.</p>
+                        </div>
+                        <div class="description-box" data-answer="security">
+                            <div class="drop-zone"></div>
+                            <p>Include cloud-based threat protection, network and perimeter security, user- and group-based identity services, video analytics, and secure physical access.</p>
+                        </div>
+                        <div class="description-box" data-answer="analytics">
+                            <div class="drop-zone"></div>
+                            <p>Distributed network infrastructure components and IoT-specific APIs, which allows you to run organization-specific software analysis packages throughout your network architecture.</p>
+                        </div>
+                        <div class="description-box" data-answer="management">
+                            <div class="drop-zone"></div>
+                            <p>Provides enhanced security and control and support for multiple siloed functions and allows convergence of operational technology and IT networks to create and enforce a consistent policy across your entire organization.</p>
+                        </div>
+                        <div class="description-box" data-answer="platform">
+                            <div class="drop-zone"></div>
+                            <p>Offers open APIs and application development environments on the rest of the Cisco IoT System for you, your partners and third parties to design, develop and deploy innovative solutions for your industry.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="check-btn" id="checkPillars">Check My Answers</button>
+                <div id="pillarsResult" class="result-box"></div>
+
+                <div class="quiz-section">
+                    <h3>Part 2: Identify Components of the Six Pillars</h3>
+                    <div class="pillars-quiz">
+                        <div class="quiz-question" data-pillar="network">
+                            <div class="question-text">
+                                <strong>Question 1:</strong> Which of the following is a component of Network Connectivity?
+                            </div>
+                            <div class="quiz-options">
+                                <button class="quiz-btn" data-answer="routers" data-question="0">Industrial routers</button>
+                                <button class="quiz-btn" data-answer="firewalls" data-question="0">Firewalls</button>
+                                <button class="quiz-btn" data-answer="edge_servers" data-question="0">Edge servers</button>
+                                <button class="quiz-btn" data-answer="ml_tools" data-question="0">Machine learning tools</button>
+                            </div>
+                            <div class="quiz-result" id="result-0"></div>
+                        </div>
+                        <div class="quiz-question" data-pillar="fog">
+                            <div class="question-text">
+                                <strong>Question 2:</strong> Which of the following is a component of Fog Computing?
+                            </div>
+                            <div class="quiz-options">
+                                <button class="quiz-btn" data-answer="local_processing" data-question="1">Local processing units</button>
+                                <button class="quiz-btn" data-answer="switches" data-question="1">Switches</button>
+                                <button class="quiz-btn" data-answer="apis" data-question="1">APIs</button>
+                                <button class="quiz-btn" data-answer="automation" data-question="1">Automation controllers</button>
+                            </div>
+                            <div class="quiz-result" id="result-1"></div>
+                        </div>
+                        <div class="quiz-question" data-pillar="security">
+                            <div class="question-text">
+                                <strong>Question 3:</strong> Which of the following is a component of Security?
+                            </div>
+                            <div class="quiz-options">
+                                <button class="quiz-btn" data-answer="encryption" data-question="2">Encryption devices</button>
+                                <button class="quiz-btn" data-answer="data_processing" data-question="2">Data processing software</button>
+                                <button class="quiz-btn" data-answer="sdks" data-question="2">SDKs</button>
+                                <button class="quiz-btn" data-answer="access_points" data-question="2">Wireless access points</button>
+                            </div>
+                            <div class="quiz-result" id="result-2"></div>
+                        </div>
+                        <div class="quiz-question" data-pillar="analytics">
+                            <div class="question-text">
+                                <strong>Question 4:</strong> Which of the following is a component of Data Analytics?
+                            </div>
+                            <div class="quiz-options">
+                                <button class="quiz-btn" data-answer="ml_tools" data-question="3">Machine learning tools</button>
+                                <button class="quiz-btn" data-answer="identity_services" data-question="3">Identity management</button>
+                                <button class="quiz-btn" data-answer="network_management" data-question="3">Network management systems</button>
+                                <button class="quiz-btn" data-answer="edge_servers" data-question="3">Edge servers</button>
+                            </div>
+                            <div class="quiz-result" id="result-3"></div>
+                        </div>
+                        <div class="quiz-question" data-pillar="management">
+                            <div class="question-text">
+                                <strong>Question 5:</strong> Which of the following is a component of Management & Automation?
+                            </div>
+                            <div class="quiz-options">
+                                <button class="quiz-btn" data-answer="automation" data-question="4">Automation controllers</button>
+                                <button class="quiz-btn" data-answer="routers" data-question="4">Industrial routers</button>
+                                <button class="quiz-btn" data-answer="development_frameworks" data-question="4">Development frameworks</button>
+                                <button class="quiz-btn" data-answer="video_analytics" data-question="4">Video analytics</button>
+                            </div>
+                            <div class="quiz-result" id="result-4"></div>
+                        </div>
+                        <div class="quiz-question" data-pillar="platform">
+                            <div class="question-text">
+                                <strong>Question 6:</strong> Which of the following is a component of Application Enablement Platform?
+                            </div>
+                            <div class="quiz-options">
+                                <button class="quiz-btn" data-answer="apis" data-question="5">APIs</button>
+                                <button class="quiz-btn" data-answer="firewalls" data-question="5">Firewalls</button>
+                                <button class="quiz-btn" data-answer="local_processing" data-question="5">Local processing units</button>
+                                <button class="quiz-btn" data-answer="data_processing" data-question="5">Data processing software</button>
+                            </div>
+                            <div class="quiz-result" id="result-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="market-analysis" class="tab-content">
+                <div class="activity-header">
+                    <h2>📊 Horizontal vs Vertical Markets Analysis</h2>
+                    <p>Learn to identify and analyze different market types in IoT applications.</p>
+                </div>
+
+                <div class="market-explanation">
+                    <div class="market-type">
+                        <h3>🔄 Horizontal Markets</h3>
+                        <p>Meet common or similar needs for a wide range of industries</p>
+                        <ul>
+                            <li>Security systems</li>
+                            <li>IT infrastructure</li>
+                            <li>Communication platforms</li>
+                            <li>Cloud services</li>
+                        </ul>
+                    </div>
+                    <div class="market-type">
+                        <h3>🎯 Vertical Markets</h3>
+                        <p>Offer goods and services to customers with specialized needs</p>
+                        <ul>
+                            <li>Healthcare systems</li>
+                            <li>Automotive manufacturing</li>
+                            <li>Banking solutions</li>
+                            <li>Education platforms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="market-chart-container">
+                    <div id="marketChart"></div>
+                </div>
+
+                <div class="quiz-section">
+                    <h3>Practice Quiz: Identify the Market Type</h3>
+                    <div id="marketQuiz"></div>
+                </div>
+            </div>
+
+            <div id="iot-simulation" class="tab-content">
+                <div class="activity-header">
+                    <h2>🔬 IoT System Simulation</h2>
+                    <p>Simulate IoT data processing and visualization using Python (Pyodide)</p>
+                </div>
+
+                <div class="simulation-controls">
+                    <button class="simulation-btn" id="startSimulation">Start Smart City Simulation</button>
+                    <button class="simulation-btn" id="generateData">Generate IoT Data</button>
+                    <button class="simulation-btn" id="analyzeData">Analyze Data</button>
+                </div>
+
+                <div class="simulation-output">
+                    <div id="simulationChart"></div>
+                    <div id="pythonOutput"></div>
+                    <div id="pyodideLoading" class="loading-indicator" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Loading Python environment...</p>
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h3>Python IoT Simulation Code</h3>
+                    <textarea id="pythonCode" rows="20">
+# IoT Smart City Data Simulation
+import random
+import json
+from datetime import datetime, timedelta
+
+class SmartCityIoT:
+    def __init__(self):
+        self.sensors = {
+            'traffic': [],
+            'parking': [],
+            'air_quality': [],
+            'energy': []
+        }
+    
+    def generate_sensor_data(self, hours=24):
+        """Generate IoT sensor data for smart city"""
+        base_time = datetime.now()
+        
+        for hour in range(hours):
+            timestamp = base_time + timedelta(hours=hour)
+            
+            # Traffic sensors (vehicles per hour)
+            traffic_data = {
+                'timestamp': timestamp.isoformat(),
+                'vehicles_per_hour': random.randint(50, 200),
+                'avg_speed': random.uniform(25, 60),
+                'congestion_level': random.choice(['Low', 'Medium', 'High'])
+            }
+            self.sensors['traffic'].append(traffic_data)
+            
+            # Parking sensors (available spots)
+            parking_data = {
+                'timestamp': timestamp.isoformat(),
+                'available_spots': random.randint(10, 100),
+                'occupancy_rate': random.uniform(0.4, 0.9),
+                'revenue': random.uniform(100, 500)
+            }
+            self.sensors['parking'].append(parking_data)
+            
+            # Air quality sensors
+            air_data = {
+                'timestamp': timestamp.isoformat(),
+                'co2_ppm': random.uniform(300, 450),
+                'pm25': random.uniform(5, 25),
+                'air_quality_index': random.randint(50, 150)
+            }
+            self.sensors['air_quality'].append(air_data)
+            
+            # Energy consumption
+            energy_data = {
+                'timestamp': timestamp.isoformat(),
+                'consumption_kwh': random.uniform(1000, 3000),
+                'renewable_percentage': random.uniform(0.2, 0.8),
+                'grid_load': random.uniform(0.5, 1.0)
+            }
+            self.sensors['energy'].append(energy_data)
+    
+    def analyze_traffic_patterns(self):
+        """Analyze traffic data using IoT analytics"""
+        if not self.sensors['traffic']:
+            return "No traffic data available"
+        
+        total_vehicles = sum(data['vehicles_per_hour'] for data in self.sensors['traffic'])
+        avg_vehicles = total_vehicles / len(self.sensors['traffic'])
+        
+        high_congestion_hours = sum(1 for data in self.sensors['traffic'] 
+                                  if data['congestion_level'] == 'High')
+        
+        return {
+            'avg_vehicles_per_hour': round(avg_vehicles, 2),
+            'high_congestion_hours': high_congestion_hours,
+            'total_data_points': len(self.sensors['traffic'])
+        }
+    
+    def get_chart_data(self):
+        """Prepare data for visualization"""
+        if not self.sensors['traffic']:
+            return {}
+        
+        hours = list(range(len(self.sensors['traffic'])))
+        vehicles = [data['vehicles_per_hour'] for data in self.sensors['traffic']]
+        parking = [data['available_spots'] for data in self.sensors['parking']]
+        
+        return {
+            'hours': hours,
+            'vehicles': vehicles,
+            'parking': parking
+        }
+
+# Create IoT system instance
+smart_city = SmartCityIoT()
+print("Smart City IoT System initialized!")
+                    </textarea>
+                    <button class="simulation-btn" id="runCode">Run Python Code</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>CMN322 - Internet of Things (IoT) | Week 6 Interactive Learning | Prepared By: Mr. Eremas Tade</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
